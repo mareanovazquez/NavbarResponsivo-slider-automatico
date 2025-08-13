@@ -27,20 +27,29 @@ header .navBar {
   display: none;
 }
 
+/* Estado base del menú (oculto) */
 header .navBarCelu {
   display: none;
-}
-
-header .showMenu .navBarCelu {
   background-color: #25282A;
-  display: flex;
   flex-direction: column;
   justify-content: flex-start;
   height: 100vh;
   width: 100%;
   position: fixed;
   z-index: 7777;
-  animation: slideInFromLeft 0.5s ease-in-out;
+  transform: translateX(-100%); /* Inicialmente fuera de la pantalla */
+}
+
+/* Menú visible con animación de entrada */
+header .showMenu .navBarCelu {
+  display: flex;
+  animation: slideInFromLeft 0.5s ease-in-out forwards;
+}
+
+/* Menú con animación de salida */
+header .hideMenu .navBarCelu {
+  display: flex;
+  animation: slideOutToLeft 0.5s ease-in-out forwards;
 }
 
 header .showMenu .navBarCelu .imgLogotipo {
@@ -873,12 +882,22 @@ main .principal .principal1 .btnPrincipal:hover {
 
 
 /*ANIMATIONS*/
-@keyframes slideInFromLeft {
-  0% {
+/* Definir la animación de salida */
+@keyframes slideOutToLeft {
+  from {
+    transform: translateX(0);
+  }
+  to {
     transform: translateX(-100%);
   }
+}
 
-  100% {
+/* Mantener la animación de entrada existente */
+@keyframes slideInFromLeft {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
     transform: translateX(0);
   }
 }
