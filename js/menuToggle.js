@@ -23,3 +23,10 @@ menuItems.forEach(item => {
 menuItemsRRSS.forEach(item => {
     item.addEventListener("click", closeMenu);
 });
+
+window.addEventListener('keydown', (event) => {
+    if (event.code === 'Escape') {
+        closeMenu();
+
+    }
+});
